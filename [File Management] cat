@@ -1,0 +1,45 @@
+Definition:
+  "cat" is a standard Unix utility that reads files sequentially, writing them to standard output. 
+The name is derived from its function to concatenate files. 
+
+Stands for:
+  Concatenate
+ 
+Function:
+  Concatenate files and print on the standard output
+
+Syntax: 
+  cat [-benstuv][file ...]
+ 
+Parameters:
+  * "-n" or "--number": 
+     Print out all the line numbers starting from 1;
+  * "-b" or "--number-nonblank"
+     Similar to "-n", but it does not numbering for blank line;
+  * "-s" or "--squeeze-blank"
+     Replace multiple continous blank lines (more than 2) as one blank line;
+  * "-v" or "--show-nonprinting"
+     Use ^ or M- simbol, except LFD and TAB;
+  * "-E" or "--show-ends"
+     Add $ at the end of each line;
+  * "-T" or "--show-tabs"
+     Show TAB as "^I";
+  * "-A" or "--show-all"
+     Equal to "-vET";
+  * "-e"
+     Equal to "-vE"
+  * "-t"
+     Equal to "-vT"
+
+Examples:
+  1) Print content of file "testfile1" with numbering into file "textfile2"
+     "cat -n testfile1 > testfile2"
+  2) Add content of file "testfile1" and "testfile2" with numbering (not for blank line) to file "testfile3"
+     "cat -b testfile1 testfile2 ?? testfile 3"
+  3) Empty the file of "etc/test.txt"
+     "cat /dev/null > /etc/test.txt"
+
+
+Reference:
+1) Wikipedia
+2) http://www.runoob.com/linux/linux-comm-cat.html
