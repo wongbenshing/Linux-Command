@@ -1,0 +1,48 @@
+Definition:
+  "chattr" is the command in the GNU operating system that allows a user to set certain attributes of a file.
+  "lsattr" is the command that displays the attributes of a file.
+
+Stands for:
+  Change attributes
+
+Function:
+  Change file attributes on an ext2 file system;
+  * There are 8 types of attribute
+    1) a: Files or directories are only for adding;
+    2) b: NOT update the last time of loading for files or directories;
+    3) c: Zip files or directories and save;
+    4) d: Except the reverse manipulation for files or directories;
+    5) i: NOT allow to modify files or directories casually;
+    6) s: Delete files or directories confidentially;
+    7) S: Update files or directories immediately;
+    8) u: Prevent delete in accident;
+
+Syntax:
+  chattr [-R] [-+=AacDdijstTu] [-v version] files...
+
+Parameters:
+  * "-R"
+      Recursive operation. Handeling all files and sub-directories in target directory;
+  * "-v":
+      Set the version of files or directories;
+  * "-V":
+      Display instructions execution processes;
+  * "+ <attribute>"
+      Open target attribute for files or directories;
+  * "- <attribute>"
+      Close target attribute for files or directories;
+  * "= <attribute>"
+      Specified attribute for files or directories; 
+
+Examples:
+  1) Use "chattr" to prevent any important file was modified in the system
+       "chattr +i /etc/resolv.conf"
+     For validation: "lsattr /etc/resolv.conf"
+     It will show the attribute as following: "----i-------- /etc/resolv.conf"
+  
+  2) Let any file can only be added data but not delete, suited for any log files:
+       "chattr +a /var/log/messages"
+       
+Reference:
+1) Wikipedia
+2) http://www.runoob.com/linux/linux-comm-chattr.html
