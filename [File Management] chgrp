@@ -1,0 +1,57 @@
+Definition:
+  The chgrp command may be used by unprivileged users on Unix-like systems to change the group associated with a file system object to one of which they are a member. A file system object has 3 sets of access permissions, one set for the owner, one set for the group and one set for others.
+
+Stands for:
+  Change group
+
+Function:
+  Change the group memebership of each FILE to GROUP
+
+Syntax:
+  chgrp [-RhLHPcvf] ... GROUP FILE ...
+
+Parameters:
+  * "-c" or "--changes"
+    Similar to "-v" but only report the part of changes;
+  * "-f" or "--quiet" or "--silent"
+    NOT showing error information;
+  * "-h" or "--no-dereference"
+    Modify ONLY the symbolic linked file and not for any other related files;
+  * "-R" or "--recursive"
+    Recursive operation, handeling all files and sub-directories under the target directory;
+  * "-v" or "-verbose"
+    Display instruction execution process;
+  * "--help"
+    Get help online;
+  * "--reference = <reference files or directories>"
+    Set the group of all target files or directories same as the group of reference files or directories;
+  * "--version"
+    Display version information;
+    
+Example:
+  1) Change file's group attribute: (group "bin")
+        "chgrp -v bin log2012.log"
+     Output:
+        [root@localhost test]# 11
+        ---xrw-r-- 1 root root 302108 11-13 06:03 log2012.log
+        [root@localhost test]# chgrp -v bin log2012.log
+     Note:
+      The group of file "log2012.log" has been changed to "bin" from "root".
+  
+  2) Change file's group attribute based on target file
+        "chgrp --reference-log2012.log log2013.log"
+     Output:
+        [root@localhost test]# ll
+        ---xrw-r-- 1 root bin  302108 11-13 06:03 log2012.log
+        -rw-r--r-- 1 root root     61 11-13 06:03 log2013.log
+        [root@localhost test]#  chgrp --reference=log2012.log log2013.log 
+        [root@localhost test]# ll
+        ---xrw-r-- 1 root bin  302108 11-13 06:03 log2012.log
+        -rw-r--r-- 1 root bin      61 11-13 06:03 log2013.log
+    Note:
+      Change the group attribute of "log2013.log", and make its attribute same as gourp attribute of "log2012.log".
+
+
+Reference:
+1) Wikipedia
+2) http://www.runoob.com/linux/linux-comm-chgrp.html
